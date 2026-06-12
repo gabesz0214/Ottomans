@@ -86,7 +86,8 @@ export const Route = createFileRoute("/")({
 
 const FACEBOOK = "https://www.facebook.com/profile.php?id=61559474031615";
 const INSTAGRAM = "https://www.instagram.com/ottomansdebrecen";
-const MAPS = "https://www.google.com/search?q=OTTOMAN%27S+D%C3%96NER%2C+FRIES+%26+WURST";
+const MAPS =
+  "https://www.google.com/maps/place/OTTOMAN'S+D%C3%96NER,+FRIES+%26+WURST/@47.5339863,21.6229101,17z/data=!3m1!4b1!4m6!3m5!1s0x47470ffaeb9084a5:0xc55cd9f4d551203c!8m2!3d47.5339827!4d21.625485!16s%2Fg%2F11vx6bf3yj?entry=ttu&g_ep=EgoyMDI2MDYxMC4wIKXMDSoASAFQAw%3D%3D";
 const PHONE = "+36306420420";
 
 type MenuItem = {
