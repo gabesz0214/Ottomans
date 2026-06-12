@@ -1,9 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState, useRef } from "react";
 import {
-  Phone, MapPin, Clock, Instagram, Facebook, Star, Flame, Leaf,
-  UtensilsCrossed, ChevronDown, ArrowRight, Navigation, Camera,
-  X, ShoppingBag
+  Phone,
+  MapPin,
+  Clock,
+  Instagram,
+  Facebook,
+  Star,
+  Flame,
+  Leaf,
+  UtensilsCrossed,
+  ChevronDown,
+  ArrowRight,
+  Navigation,
+  Camera,
+  X,
+  ShoppingBag,
 } from "lucide-react";
 
 import logo from "@/assets/ottomans-logo.jpg";
@@ -15,7 +27,7 @@ import donerDurum from "@/assets/doner-durum.png";
 import donerLahmacun from "@/assets/doner-lahmacun.png";
 import donerVeggieDurum from "@/assets/doner-veggie-durum.png";
 import donerPocket from "@/assets/doner-pocket.png";
-import lahmacun from "@/assets/lahmacun.png";
+import lahmacun from "@/assets/lahmacun.jpg";
 import donerTal from "@/assets/doner-tal.png";
 import fitBox from "@/assets/fit-box.png";
 import stripsL from "@/assets/strips-l.png";
@@ -46,20 +58,27 @@ import heroOriginal from "@/assets/ottomans-hero.jpg";
 import illustrations from "@/assets/food-illustrations.png";
 import foodFries from "@/assets/food-fries.png";
 import headerLogo from "@/assets/header-logo.png";
-import aboutInterior from "@/assets/about-interior.png";
-import gallery1 from "@/assets/gallery-1.png";
-import gallery2 from "@/assets/gallery-2.png";
-import gallery3 from "@/assets/gallery-3.png";
+import aboutInterior from "@/assets/about-interior.jpg";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.png";
-import gallery6 from "@/assets/gallery-6.png";
+import gallery6 from "@/assets/gallery-6.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Ottoman's Döner, Fries & Wurst — Prémium street food Debrecen" },
-      { name: "description", content: "Eredeti török ízek, ropogós hasáb és tüzes curry wurst Debrecen szívében. Nézd meg az étlapot és látogass el hozzánk!" },
+      {
+        name: "description",
+        content:
+          "Eredeti török ízek, ropogós hasáb és tüzes curry wurst Debrecen szívében. Nézd meg az étlapot és látogass el hozzánk!",
+      },
       { property: "og:title", content: "Ottoman's Döner, Fries & Wurst — Debrecen" },
-      { property: "og:description", content: "Prémium street food élmény. Eredeti török ízek Debrecenben." },
+      {
+        property: "og:description",
+        content: "Prémium street food élmény. Eredeti török ízek Debrecenben.",
+      },
     ],
   }),
   component: OttomansPage,
@@ -79,51 +98,230 @@ type MenuItem = {
 };
 
 const MENU: Record<string, MenuItem[]> = {
-  "Döner": [
-    { name: "Döner", desc: "Friss Török kenyér csirkével vagy marhával, zöldségekkel és választható szószokkal", price: "3 500 Ft", img: donerSandwich, tags: ["nepszeru"] },
-    { name: "Dürüm", desc: "Tortilla csirkével vagy marhával, zöldségekkel és választható szószokkal", price: "3 500 Ft", img: donerDurum, tags: ["nepszeru"] },
-    { name: "Lahmacun", desc: "Friss török pizza zöldségekkel és választható szószokkal.", price: "3 200 Ft", img: lahmacun },
-    { name: "Lahmacun Döner", desc: "friss török pizza hússal, zöldségekkel és választható szószokkal.", price: "4 200 Ft", img: donerLahmacun },
-    { name: "Veggie Döner", desc: "Döner halloumi sajttal, zöldségekkel és választható szószokkal.", price: "3 200 Ft", img: donerPocket, tags: ["veg"] },
-    { name: "Veggie Dürüm", desc: "Dürüm halloumi sajttal, zöldségekkel és választható szószokkal.", price: "3 200 Ft", tags: ["veg"] },
+  Döner: [
+    {
+      name: "Döner",
+      desc: "Friss Török kenyér csirkével vagy marhával, zöldségekkel és választható szószokkal",
+      price: "3 500 Ft",
+      img: donerSandwich,
+      tags: ["nepszeru"],
+    },
+    {
+      name: "Dürüm",
+      desc: "Tortilla csirkével vagy marhával, zöldségekkel és választható szószokkal",
+      price: "3 500 Ft",
+      img: donerDurum,
+      tags: ["nepszeru"],
+    },
+    {
+      name: "Lahmacun",
+      desc: "Friss török pizza zöldségekkel és választható szószokkal.",
+      price: "3 200 Ft",
+      img: lahmacun,
+    },
+    {
+      name: "Lahmacun Döner",
+      desc: "friss török pizza hússal, zöldségekkel és választható szószokkal.",
+      price: "4 200 Ft",
+      img: donerLahmacun,
+    },
+    {
+      name: "Veggie Döner",
+      desc: "Döner halloumi sajttal, zöldségekkel és választható szószokkal.",
+      price: "3 200 Ft",
+      img: donerPocket,
+      tags: ["veg"],
+    },
+    {
+      name: "Veggie Dürüm",
+      desc: "Dürüm halloumi sajttal, zöldségekkel és választható szószokkal.",
+      price: "3 200 Ft",
+      tags: ["veg"],
+    },
   ],
-  "Menük": [
-    { name: "Döner Menü", desc: "A Döner Menüben a köret közepes burgonya. Kérjük válasszon hozzá üdítőt!", price: "4 500 Ft", img: menuDoner, tags: ["nepszeru"] },
-    { name: "Dürüm Menü", desc: "A Dürüm Menüben a köret közepes burgonya. Kérjük válasszon hozzá üdítőt!", price: "4 500 Ft", img: menuDurum, tags: ["nepszeru"] },
-    { name: "Curry Wurst Menü", desc: "két kolbász különleges curry szósszal és curryporral, két adag sült krumpli majonézzel.", price: "4 200 Ft", img: menuCurrywurst },
-    { name: "Kids Menü", desc: "Hat csirkefalatka sült krumplival, 330 ml itallal és választott szósszal", price: "3 100 Ft" },
-    { name: "Lahmacun Menü", desc: "Friss török pizza választható zöldségekkel és szószokkal, 1 adag sült krumplival és üdítővel (330 ml)", price: "4 100 Ft", img: menuLahmacun },
-    { name: "Lahmacun Döner Menü", desc: "Friss török pizza választható hússal, zöldségekkel és szószokkal, 1 adag sült krumplival és üdítővel (330 ml)", price: "4 900 Ft", img: menuLahmacunDoner },
-    { name: "Veggie Döner Menü", desc: "Friss török kenyér halloumi sajttal, zöldségekkel és választott szószokkal. (1 adag sült krumpli és 330 ml üdítő)", price: "4 100 Ft", img: menuVeggieDoner, tags: ["veg"] },
-    { name: "Veggie Dürüm Menü", desc: "Friss tortilla halloumi sajttal, zöldségekkel és választott szószokkal. (1 adag sült krumpli és 330 ml üdítő)", price: "4 100 Ft", tags: ["veg"] },
+  Menük: [
+    {
+      name: "Döner Menü",
+      desc: "A Döner Menüben a köret közepes burgonya. Kérjük válasszon hozzá üdítőt!",
+      price: "4 500 Ft",
+      img: menuDoner,
+      tags: ["nepszeru"],
+    },
+    {
+      name: "Dürüm Menü",
+      desc: "A Dürüm Menüben a köret közepes burgonya. Kérjük válasszon hozzá üdítőt!",
+      price: "4 500 Ft",
+      img: menuDurum,
+      tags: ["nepszeru"],
+    },
+    {
+      name: "Curry Wurst Menü",
+      desc: "két kolbász különleges curry szósszal és curryporral, két adag sült krumpli majonézzel.",
+      price: "4 200 Ft",
+      img: menuCurrywurst,
+    },
+    {
+      name: "Kids Menü",
+      desc: "Hat csirkefalatka sült krumplival, 330 ml itallal és választott szósszal",
+      price: "3 100 Ft",
+    },
+    {
+      name: "Lahmacun Menü",
+      desc: "Friss török pizza választható zöldségekkel és szószokkal, 1 adag sült krumplival és üdítővel (330 ml)",
+      price: "4 100 Ft",
+      img: menuLahmacun,
+    },
+    {
+      name: "Lahmacun Döner Menü",
+      desc: "Friss török pizza választható hússal, zöldségekkel és szószokkal, 1 adag sült krumplival és üdítővel (330 ml)",
+      price: "4 900 Ft",
+      img: menuLahmacunDoner,
+    },
+    {
+      name: "Veggie Döner Menü",
+      desc: "Friss török kenyér halloumi sajttal, zöldségekkel és választott szószokkal. (1 adag sült krumpli és 330 ml üdítő)",
+      price: "4 100 Ft",
+      img: menuVeggieDoner,
+      tags: ["veg"],
+    },
+    {
+      name: "Veggie Dürüm Menü",
+      desc: "Friss tortilla halloumi sajttal, zöldségekkel és választott szószokkal. (1 adag sült krumpli és 330 ml üdítő)",
+      price: "4 100 Ft",
+      tags: ["veg"],
+    },
   ],
   "Döner Tál": [
-    { name: "Döner Tál", desc: "Egy tál étel csirkével vagy marhával, sült krumpli zöldségekkel és választható szószokkal", price: "5 400 Ft", img: donerTal, tags: ["nepszeru"] },
-    { name: "Fit Box", desc: "Doboz étel csirkével vagy marhával, zöldségekkel és választható szószokkal", price: "3 500 Ft", img: fitBox },
+    {
+      name: "Döner Tál",
+      desc: "Egy tál étel csirkével vagy marhával, sült krumpli zöldségekkel és választható szószokkal",
+      price: "5 400 Ft",
+      img: donerTal,
+      tags: ["nepszeru"],
+    },
+    {
+      name: "Fit Box",
+      desc: "Doboz étel csirkével vagy marhával, zöldségekkel és választható szószokkal",
+      price: "3 500 Ft",
+      img: fitBox,
+    },
   ],
-  "Snacks": [
-    { name: "Strips L", desc: "300 gramm szaftos csirkemellcsíkok, két adag sült krumpli és egy választott szósz.", price: "3 800 Ft", img: stripsL },
-    { name: "Strips XL", desc: "500 gramm szaftos csirkecsíkok, két adag sült krumpli és két választott szósz", price: "5 100 Ft", img: stripsXl },
-    { name: "Curry Wurst", desc: "két kolbász különleges curry szósszal és curryporral, két adag sült krumpli majonézzel.", price: "3 600 Ft", img: curryWurstSnack },
+  Snacks: [
+    {
+      name: "Strips L",
+      desc: "300 gramm szaftos csirkemellcsíkok, két adag sült krumpli és egy választott szósz.",
+      price: "3 800 Ft",
+      img: stripsL,
+    },
+    {
+      name: "Strips XL",
+      desc: "500 gramm szaftos csirkecsíkok, két adag sült krumpli és két választott szósz",
+      price: "5 100 Ft",
+      img: stripsXl,
+    },
+    {
+      name: "Curry Wurst",
+      desc: "két kolbász különleges curry szósszal és curryporral, két adag sült krumpli majonézzel.",
+      price: "3 600 Ft",
+      img: curryWurstSnack,
+    },
   ],
-  "Köretek": [
-    { name: "Sültkrumpli", desc: "Kétszer sült, ropogós hasábburgonya tengeri sóval és választható házi szósszal.", price: "1 100 Ft", img: sultkrumpli, tags: ["veg"] },
+  Köretek: [
+    {
+      name: "Sültkrumpli",
+      desc: "Kétszer sült, ropogós hasábburgonya tengeri sóval és választható házi szósszal.",
+      price: "1 100 Ft",
+      img: sultkrumpli,
+      tags: ["veg"],
+    },
   ],
-  "Italok": [
-    { name: "NaturAqua szénsavmentes 0,5l", desc: "Szénsavmentes természetes ásványvíz.", price: "550 Ft", img: naturaquaSzensavmentes },
-    { name: "NaturAqua szénsavas 0,5l", desc: "Szénsavas természetes ásványvíz.", price: "550 Ft", img: naturaquaSzensavas },
-    { name: "Coca-Cola 0,33l", desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!", price: "650 Ft", img: cocaCola033 },
-    { name: "Coca-Cola Zero 0,33l", desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!", price: "650 Ft", img: cocaColaZero033 },
-    { name: "Coca Cola Cherry Zero 0,33l", desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!", price: "650 Ft", img: cocaColaCherryZero033 },
-    { name: "Coca-Cola Cherry Zero 0,5l", desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!", price: "700 Ft", img: cocaColaCherryZero05 },
-    { name: "Kinley Ginger Ale 0,33l", desc: "Klasszikus gyömbér ízű szénsavas üdítőital.", price: "650 Ft", img: kinleyGingerAle033 },
-    { name: "Sprite 0,33l", desc: "Citrom-lime ízű szénsavas üdítőital.", price: "650 Ft", img: sprite033 },
-    { name: "Monster Lewis Hamilton 0,5l", desc: "Lewis Hamilton kiadású energiaital.", price: "990 Ft", tags: ["18+"], img: monsterHamilton },
-    { name: "Fanta 0,33l", desc: "Narancs ízű szénsavas üdítőital.", price: "650 Ft", img: fanta033 },
-    { name: "Monster Fehér 0,5l", desc: "Cukormentes Monster energiaital.", price: "990 Ft", tags: ["18+"], img: monsterFeher },
-    { name: "Coca-Cola 0,5l", desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!", price: "700 Ft", img: cocaCola05 },
-    { name: "Powerade Blue 0,5l", desc: "Kék bogyós gyümölcs ízű izotóniás sportital.", price: "800 Ft", img: poweradeBlue05 },
-    { name: "Sprite Zero 0,5l", desc: "Cukormentes citrom-lime ízű szénsavas üdítőital.", price: "700 Ft", img: spriteZero05 },
+  Italok: [
+    {
+      name: "NaturAqua szénsavmentes 0,5l",
+      desc: "Szénsavmentes természetes ásványvíz.",
+      price: "550 Ft",
+      img: naturaquaSzensavmentes,
+    },
+    {
+      name: "NaturAqua szénsavas 0,5l",
+      desc: "Szénsavas természetes ásványvíz.",
+      price: "550 Ft",
+      img: naturaquaSzensavas,
+    },
+    {
+      name: "Coca-Cola 0,33l",
+      desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!",
+      price: "650 Ft",
+      img: cocaCola033,
+    },
+    {
+      name: "Coca-Cola Zero 0,33l",
+      desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!",
+      price: "650 Ft",
+      img: cocaColaZero033,
+    },
+    {
+      name: "Coca Cola Cherry Zero 0,33l",
+      desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!",
+      price: "650 Ft",
+      img: cocaColaCherryZero033,
+    },
+    {
+      name: "Coca-Cola Cherry Zero 0,5l",
+      desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!",
+      price: "700 Ft",
+      img: cocaColaCherryZero05,
+    },
+    {
+      name: "Kinley Ginger Ale 0,33l",
+      desc: "Klasszikus gyömbér ízű szénsavas üdítőital.",
+      price: "650 Ft",
+      img: kinleyGingerAle033,
+    },
+    {
+      name: "Sprite 0,33l",
+      desc: "Citrom-lime ízű szénsavas üdítőital.",
+      price: "650 Ft",
+      img: sprite033,
+    },
+    {
+      name: "Monster Lewis Hamilton 0,5l",
+      desc: "Lewis Hamilton kiadású energiaital.",
+      price: "990 Ft",
+      tags: ["18+"],
+      img: monsterHamilton,
+    },
+    {
+      name: "Fanta 0,33l",
+      desc: "Narancs ízű szénsavas üdítőital.",
+      price: "650 Ft",
+      img: fanta033,
+    },
+    {
+      name: "Monster Fehér 0,5l",
+      desc: "Cukormentes Monster energiaital.",
+      price: "990 Ft",
+      tags: ["18+"],
+      img: monsterFeher,
+    },
+    {
+      name: "Coca-Cola 0,5l",
+      desc: "2 Coca-Cola termék vásárlásakor 30% kedvezmény az italok fogy. árából!",
+      price: "700 Ft",
+      img: cocaCola05,
+    },
+    {
+      name: "Powerade Blue 0,5l",
+      desc: "Kék bogyós gyümölcs ízű izotóniás sportital.",
+      price: "800 Ft",
+      img: poweradeBlue05,
+    },
+    {
+      name: "Sprite Zero 0,5l",
+      desc: "Cukormentes citrom-lime ízű szénsavas üdítőital.",
+      price: "700 Ft",
+      img: spriteZero05,
+    },
   ],
 };
 
@@ -144,8 +342,8 @@ function useIntersectionObserver() {
       },
       {
         threshold: 0.05,
-        rootMargin: "0px 0px -40px 0px"
-      }
+        rootMargin: "0px 0px -40px 0px",
+      },
     );
 
     observer.observe(el);
@@ -166,12 +364,18 @@ function useOpenStatus() {
   // Open every day 11:00 - 24:00 (Europe/Budapest approximated by local)
   const hour = now.getHours();
   const minute = now.getMinutes();
-  const inHours = hour >= 11 && (hour < 24);
-  return { open: inHours, label: inHours ? "Most nyitva" : "Most zárva", time: `${hour.toString().padStart(2,"0")}:${minute.toString().padStart(2,"0")}` };
+  const inHours = hour >= 11 && hour < 24;
+  return {
+    open: inHours,
+    label: inHours ? "Most nyitva" : "Most zárva",
+    time: `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`,
+  };
 }
 
 function CheckerboardDivider() {
-  return <div className="h-12 w-full bg-slanted-checkerboard border-y border-primary/10 shadow-sm relative z-20" />;
+  return (
+    <div className="h-12 w-full bg-slanted-checkerboard border-y border-primary/10 shadow-sm relative z-20" />
+  );
 }
 
 function OttomansPage() {
@@ -200,11 +404,19 @@ function Header() {
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-6 rounded-2xl border border-border bg-background/60 backdrop-blur-xl px-3 sm:px-5 py-2.5 shadow-2xl">
           <a href="#top" className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 rounded-xl overflow-hidden ring-1 ring-accent/40 bg-white">
-              <img src={headerLogo} alt="Ottoman's Döner logó" className="h-full w-full object-contain mix-blend-multiply p-0.5" />
+              <img
+                src={headerLogo}
+                alt="Ottoman's Döner logó"
+                className="h-full w-full object-contain mix-blend-multiply p-0.5"
+              />
             </div>
             <div className="flex flex-col leading-tight min-w-0">
-              <span className="font-display text-base sm:text-lg tracking-wider text-foreground truncate">OTTOMAN'S</span>
-              <span className="text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.25em] text-accent uppercase truncate">Döner · Fries · Wurst</span>
+              <span className="font-display text-base sm:text-lg tracking-wider text-foreground truncate">
+                OTTOMAN'S
+              </span>
+              <span className="text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.25em] text-accent uppercase truncate">
+                Döner · Fries · Wurst
+              </span>
             </div>
           </a>
 
@@ -215,7 +427,11 @@ function Header() {
               ["Galéria", "#gallery"],
               ["Kapcsolat", "#contact"],
             ].map(([label, href]) => (
-              <a key={href} href={href} className="relative group text-foreground/80 hover:text-foreground transition-colors">
+              <a
+                key={href}
+                href={href}
+                className="relative group text-foreground/80 hover:text-foreground transition-colors"
+              >
                 <span className="uppercase tracking-[0.18em] text-[12px]">{label}</span>
                 <span className="absolute left-0 -bottom-1 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
@@ -223,15 +439,27 @@ function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <span className={`inline-flex items-center gap-1.5 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 text-[9px] sm:text-[11px] font-medium tracking-wider uppercase border ${status.open ? "border-emerald-500/30 text-emerald-700 bg-emerald-50" : "border-red-500/30 text-red-700 bg-red-50"}`}>
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full px-2 py-1 sm:px-3 sm:py-1.5 text-[9px] sm:text-[11px] font-medium tracking-wider uppercase border ${status.open ? "border-emerald-500/30 text-emerald-700 bg-emerald-50" : "border-red-500/30 text-red-700 bg-red-50"}`}
+            >
               <span className={`relative flex h-1.5 w-1.5 sm:h-2 sm:w-2`}>
-                <span className={`absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping ${status.open ? "bg-emerald-400" : "bg-red-400"}`} />
-                <span className={`relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 ${status.open ? "bg-emerald-500" : "bg-red-500"}`} />
+                <span
+                  className={`absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping ${status.open ? "bg-emerald-400" : "bg-red-400"}`}
+                />
+                <span
+                  className={`relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 ${status.open ? "bg-emerald-500" : "bg-red-500"}`}
+                />
               </span>
               {status.label}
             </span>
-            <a href="#menu" className="hidden lg:inline-flex btn-ember !py-2.5 !px-5 text-sm">Étlap <ArrowRight className="h-4 w-4"/></a>
-            <button onClick={() => setOpen(v => !v)} className="md:hidden p-2 text-foreground" aria-label="Menü">
+            <a href="#menu" className="hidden lg:inline-flex btn-ember !py-2.5 !px-5 text-sm">
+              Étlap <ArrowRight className="h-4 w-4" />
+            </a>
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className="md:hidden p-2 text-foreground"
+              aria-label="Menü"
+            >
               <ChevronDown className={`h-6 w-6 transition-transform ${open ? "rotate-180" : ""}`} />
             </button>
           </div>
@@ -245,7 +473,14 @@ function Header() {
               ["Rólunk", "#about"],
               ["Kapcsolat", "#contact"],
             ].map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setOpen(false)} className="px-3 py-2 rounded-lg hover:bg-muted text-foreground/90 uppercase tracking-widest text-sm">{label}</a>
+              <a
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="px-3 py-2 rounded-lg hover:bg-muted text-foreground/90 uppercase tracking-widest text-sm"
+              >
+                {label}
+              </a>
             ))}
             <div className="h-px bg-border my-1" />
             <button
@@ -265,32 +500,102 @@ function Header() {
   );
 }
 
-
 function Hero() {
   const status = useOpenStatus();
   return (
-    <section id="top" className="relative w-full min-h-screen pt-32 pb-24 flex items-center noise overflow-hidden" style={{ backgroundImage: "radial-gradient(circle at center, #ffffff 40%, #f4f4f5 120%)" }}>
+    <section
+      id="top"
+      className="relative w-full min-h-screen pt-32 pb-24 flex items-center noise overflow-hidden"
+      style={{ backgroundImage: "radial-gradient(circle at center, #ffffff 40%, #f4f4f5 120%)" }}
+    >
       {/* Top Slanted Checkerboard Banner */}
       <div className="absolute top-0 left-0 right-0 h-12 bg-slanted-checkerboard border-b border-primary/10 shadow-sm z-30" />
 
       {/* Mesh Gradient Blobs */}
-      <div className="absolute top-[10%] left-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out" />
-      <div className="absolute bottom-[10%] right-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-amber-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out" style={{ animationDelay: "4s" }} />
+      <div className="hidden md:block absolute top-[10%] left-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out transform-gpu will-change-transform" />
+      <div
+        className="hidden md:block absolute bottom-[10%] right-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-amber-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out transform-gpu will-change-transform"
+        style={{ animationDelay: "4s" }}
+      />
 
       {/* Scattered food illustrations (Desktop Only) */}
       <div className="hidden lg:block">
         {[
           // Left side (4 symmetrical rows, shifted closer to center, larger sizes, casual rotations)
-          { left: "10%", top: "16%", size: "w-18 h-18 xl:w-22 xl:h-22", rotClass: "-rotate-6", bgPos: "0% 0%", anim: "animate-float-1", label: "Döner Húsnyárs" },
-          { left: "17%", top: "38%", size: "w-16 h-16 xl:w-20 xl:h-20", rotClass: "rotate-6", bgPos: "0% 100%", anim: "animate-float-2", label: "Dürüm" },
-          { left: "11%", top: "60%", size: "w-18 h-18 xl:w-22 xl:h-22", rotClass: "-rotate-3", img: foodFries, anim: "animate-float-3", label: "Hasábburgonya" },
-          { left: "16%", top: "82%", size: "w-20 h-20 xl:w-24 xl:h-24", rotClass: "rotate-12", bgPos: "100% 0%", anim: "animate-float-4", label: "Pita" },
+          {
+            left: "10%",
+            top: "16%",
+            size: "w-18 h-18 xl:w-22 xl:h-22",
+            rotClass: "-rotate-6",
+            bgPos: "0% 0%",
+            anim: "animate-float-1",
+            label: "Döner Húsnyárs",
+          },
+          {
+            left: "17%",
+            top: "38%",
+            size: "w-16 h-16 xl:w-20 xl:h-20",
+            rotClass: "rotate-6",
+            bgPos: "0% 100%",
+            anim: "animate-float-2",
+            label: "Dürüm",
+          },
+          {
+            left: "11%",
+            top: "60%",
+            size: "w-18 h-18 xl:w-22 xl:h-22",
+            rotClass: "-rotate-3",
+            img: foodFries,
+            anim: "animate-float-3",
+            label: "Hasábburgonya",
+          },
+          {
+            left: "16%",
+            top: "82%",
+            size: "w-20 h-20 xl:w-24 xl:h-24",
+            rotClass: "rotate-12",
+            bgPos: "100% 0%",
+            anim: "animate-float-4",
+            label: "Pita",
+          },
 
           // Right side (4 symmetrical rows matching the left side in position, size, anim, but with unique casual rotations)
-          { right: "10%", top: "16%", size: "w-18 h-18 xl:w-22 xl:h-22", rotClass: "rotate-6", bgPos: "0% 0%", anim: "animate-float-1", label: "Döner Húsnyárs" },
-          { right: "17%", top: "38%", size: "w-16 h-16 xl:w-20 xl:h-20", rotClass: "-rotate-6", bgPos: "0% 100%", anim: "animate-float-2", label: "Dürüm" },
-          { right: "11%", top: "60%", size: "w-18 h-18 xl:w-22 xl:h-22", rotClass: "rotate-3", img: foodFries, anim: "animate-float-3", label: "Hasábburgonya" },
-          { right: "16%", top: "82%", size: "w-20 h-20 xl:w-24 xl:h-24", rotClass: "-rotate-12", bgPos: "100% 0%", anim: "animate-float-4", label: "Pita" }
+          {
+            right: "10%",
+            top: "16%",
+            size: "w-18 h-18 xl:w-22 xl:h-22",
+            rotClass: "rotate-6",
+            bgPos: "0% 0%",
+            anim: "animate-float-1",
+            label: "Döner Húsnyárs",
+          },
+          {
+            right: "17%",
+            top: "38%",
+            size: "w-16 h-16 xl:w-20 xl:h-20",
+            rotClass: "-rotate-6",
+            bgPos: "0% 100%",
+            anim: "animate-float-2",
+            label: "Dürüm",
+          },
+          {
+            right: "11%",
+            top: "60%",
+            size: "w-18 h-18 xl:w-22 xl:h-22",
+            rotClass: "rotate-3",
+            img: foodFries,
+            anim: "animate-float-3",
+            label: "Hasábburgonya",
+          },
+          {
+            right: "16%",
+            top: "82%",
+            size: "w-20 h-20 xl:w-24 xl:h-24",
+            rotClass: "-rotate-12",
+            bgPos: "100% 0%",
+            anim: "animate-float-4",
+            label: "Pita",
+          },
         ].map((emoji, idx) => {
           const outerStyle: React.CSSProperties = {
             position: "absolute",
@@ -301,7 +606,8 @@ function Hero() {
             backgroundImage: `url(${emoji.img || illustrations})`,
             backgroundSize: emoji.img ? "contain" : "200% 200%",
             backgroundPosition: emoji.img ? "center" : emoji.bgPos,
-            filter: "drop-shadow(0 0 15px rgba(249,115,22,0.18)) drop-shadow(0 6px 12px rgba(0,0,0,0.06))",
+            filter:
+              "drop-shadow(0 0 15px rgba(249,115,22,0.18)) drop-shadow(0 6px 12px rgba(0,0,0,0.06))",
           };
           return (
             <div
@@ -328,11 +634,16 @@ function Hero() {
 
           {/* Centered Brand Logo */}
           <div className="max-w-[320px] sm:max-w-[580px] md:max-w-3xl w-full mb-6 animate-reveal">
-            <img src={logo} alt="Ottoman's Logo" className="w-full h-auto object-contain mix-blend-multiply" />
+            <img
+              src={logo}
+              alt="Ottoman's Logo"
+              className="w-full h-auto object-contain mix-blend-multiply"
+            />
           </div>
 
           <p className="mt-8 max-w-2xl text-base sm:text-lg text-zinc-800 leading-relaxed text-center animate-reveal">
-            Lassan sült döner, ropogós belga hasáb és berlini curry wurst — Isztambul utcáinak tüze és Európa street-food kultúrája egyetlen falatban.
+            Lassan sült döner, ropogós belga hasáb és berlini curry wurst — Isztambul utcáinak tüze
+            és Európa street-food kultúrája egyetlen falatban.
           </p>
 
           {/* Static Badges */}
@@ -349,7 +660,9 @@ function Hero() {
           </div>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4 animate-reveal">
-            <a href="#menu" className="btn-ember">Nézd meg a menüt <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" /></a>
+            <a href="#menu" className="btn-ember">
+              Nézd meg a menüt <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+            </a>
             <a href={MAPS} target="_blank" rel="noreferrer" className="btn-ghost-gold">
               <Navigation className="h-4 w-4 sm:h-5 sm:w-5" /> Hogyan találsz ide?
             </a>
@@ -371,19 +684,31 @@ function Stat({ k, v }: { k: string; v: string }) {
   return (
     <div className="border-l-2 border-primary/60 pl-2 sm:pl-3">
       <div className="font-display text-xl sm:text-2xl text-foreground leading-tight">{k}</div>
-      <div className="text-[9px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-muted-foreground mt-0.5 leading-snug">{v}</div>
+      <div className="text-[9px] sm:text-[11px] uppercase tracking-wider sm:tracking-widest text-muted-foreground mt-0.5 leading-snug">
+        {v}
+      </div>
     </div>
   );
 }
 
 function Marquee() {
-  const items = ["Eredeti török ízek", "Ropogós belga hasáb", "Berlini Curry Wurst", "Friss lavash naponta", "Házi szószok", "Debrecen ❤️"];
+  const items = [
+    "Eredeti török ízek",
+    "Ropogós belga hasáb",
+    "Berlini Curry Wurst",
+    "Friss lavash naponta",
+    "Házi szószok",
+    "Debrecen ❤️",
+  ];
   const row = [...items, ...items];
   return (
     <div className="relative py-6 border-y border-border bg-gradient-to-r from-blood/20 via-background to-blood/20 overflow-hidden">
       <div className="flex gap-12 animate-marquee whitespace-nowrap w-max">
         {row.map((t, i) => (
-          <span key={i} className="font-display text-2xl sm:text-3xl tracking-[0.15em] uppercase text-foreground/80 inline-flex items-center gap-12">
+          <span
+            key={i}
+            className="font-display text-2xl sm:text-3xl tracking-[0.15em] uppercase text-foreground/80 inline-flex items-center gap-12"
+          >
             {t} <span className="text-accent">✦</span>
           </span>
         ))}
@@ -398,16 +723,16 @@ function MenuItemCard({ item, index, active }: { item: MenuItem; index: number; 
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Reset load state when active category or image changes
-    setImgLoaded(false);
-  }, [item.img]);
-
-  useEffect(() => {
     const img = imgRef.current;
-    if (img) {
-      if (img.complete) {
-        setImgLoaded(true);
-      }
+    if (!item.img) {
+      setImgLoaded(false);
+      return;
+    }
+
+    if (img && img.complete) {
+      setImgLoaded(true);
+    } else {
+      setImgLoaded(false);
     }
   }, [item.img]);
 
@@ -415,45 +740,59 @@ function MenuItemCard({ item, index, active }: { item: MenuItem; index: number; 
     <article
       ref={ref}
       className={`card-3d group relative overflow-hidden rounded-3xl border border-primary/20 bg-white shadow-sm hover:shadow-md noise flex ${
-        active === "Italok" ? "flex-row min-h-[120px]" : "flex-col-reverse sm:flex-row min-h-[180px]"
+        active === "Italok"
+          ? "flex-row min-h-[120px]"
+          : "flex-col-reverse sm:flex-row min-h-[180px]"
       } justify-between items-stretch sm:h-[190px] transform transition-all duration-500 ease-out ${
         isVisible ? "animate-card-shine" : ""
       }`}
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(10px)",
-        transitionDelay: isVisible ? `${(index % 4) * 0.06}s` : "0s"
+        transitionDelay: isVisible ? `${(index % 4) * 0.06}s` : "0s",
       }}
     >
       {/* Left Column (Content) */}
-      <div className={`p-4 sm:p-6 flex flex-col justify-between ${
-        item.img 
-          ? (active === "Italok" ? "w-[75%]" : "w-full sm:w-[60%]") 
-          : "w-full"
-      } z-10`}>
+      <div
+        className={`p-4 sm:p-6 flex flex-col justify-between ${
+          item.img ? (active === "Italok" ? "w-[75%]" : "w-full sm:w-[60%]") : "w-full"
+        } z-10`}
+      >
         <div>
           <div className="flex items-center gap-2 mb-2 flex-wrap">
-            <h3 className={`font-display uppercase tracking-wide text-foreground ${
-              active === "Italok" ? "text-base sm:text-xl" : "text-xl sm:text-3xl"
-            }`}>{item.name}</h3>
-            {item.tags?.map(t => <Tag key={t} t={t} />)}
+            <h3
+              className={`font-display uppercase tracking-wide text-foreground ${
+                active === "Italok" ? "text-base sm:text-xl" : "text-xl sm:text-3xl"
+              }`}
+            >
+              {item.name}
+            </h3>
+            {item.tags?.map((t) => (
+              <Tag key={t} t={t} />
+            ))}
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-md line-clamp-2 sm:line-clamp-none">{item.desc}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-md line-clamp-2 sm:line-clamp-none">
+            {item.desc}
+          </p>
         </div>
         <div className="mt-2 sm:mt-4">
-          <div className="font-display text-2xl sm:text-3xl font-bold text-zinc-900 leading-none">{item.price}</div>
+          <div className="font-display text-2xl sm:text-3xl font-bold text-zinc-900 leading-none">
+            {item.price}
+          </div>
         </div>
       </div>
 
       {/* Right Column (Image block) */}
       {item.img && (
-        <div className={`shrink-0 relative overflow-hidden ${
-          active === "Italok" 
-            ? "w-[25%] bg-transparent" 
-            : "w-full h-48 sm:h-auto sm:w-[40%] border-b sm:border-b-0 sm:border-l border-primary/10 bg-white"
-        }`}>
+        <div
+          className={`shrink-0 relative overflow-hidden ${
+            active === "Italok"
+              ? "w-[25%] bg-transparent"
+              : "w-full h-48 sm:h-auto sm:w-[40%] border-b sm:border-b-0 sm:border-l border-primary/10 bg-white"
+          }`}
+        >
           {/* Shimmer skeleton loader */}
-          <div 
+          <div
             className={`absolute inset-0 bg-zinc-100 overflow-hidden transition-opacity duration-300 pointer-events-none z-10 ${
               imgLoaded ? "opacity-0" : "opacity-100"
             }`}
@@ -471,6 +810,7 @@ function MenuItemCard({ item, index, active }: { item: MenuItem; index: number; 
               active === "Italok" ? "object-contain p-2" : "object-cover"
             }`}
             loading="lazy"
+            decoding="async"
           />
         </div>
       )}
@@ -496,7 +836,7 @@ function Menu() {
           left: activeBtn.offsetLeft,
           width: activeBtn.offsetWidth,
           height: activeBtn.offsetHeight,
-          opacity: 1
+          opacity: 1,
         });
       }
     };
@@ -553,13 +893,20 @@ function Menu() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12 pt-4 sm:pt-6">
           <div>
-            <div className="text-accent text-[11px] tracking-[0.3em] uppercase mb-3">— Az étlap</div>
+            <div className="text-accent text-[11px] tracking-[0.3em] uppercase mb-3">
+              — Az étlap
+            </div>
             <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.15] uppercase">
-              Tüz, hús,<br/><span className="text-gradient-ember italic font-serif font-black tracking-wide">ízek.</span>
+              Tüz, hús,
+              <br />
+              <span className="text-gradient-ember italic font-serif font-black tracking-wide">
+                ízek.
+              </span>
             </h2>
           </div>
           <p className="max-w-md text-muted-foreground">
-            Minden falatunk mögött 12 órás pácolás és lassú nyársas sütés áll. Válassz kedvedre, mi felépítjük neked.
+            Minden falatunk mögött 12 órás pácolás és lassú nyársas sütés áll. Válassz kedvedre, mi
+            felépítjük neked.
           </p>
         </div>
 
@@ -568,21 +915,23 @@ function Menu() {
           <div className="pointer-events-none absolute right-4 top-0 bottom-3 w-8 z-20 bg-gradient-to-l from-background to-transparent sm:hidden" />
           <div className="flex overflow-x-auto pb-3 gap-2 mb-10 scrollbar-none snap-x snap-mandatory scroll-smooth relative">
             {/* Sliding active pill background */}
-            <div 
+            <div
               className="absolute bg-primary transition-all duration-300 ease-in-out pointer-events-none shadow-sm z-0"
               style={{
                 left: `${pillStyle.left}px`,
                 width: `${pillStyle.width}px`,
                 height: `${pillStyle.height}px`,
                 opacity: pillStyle.opacity,
-                borderRadius: "4px 12px 4px 12px"
+                borderRadius: "4px 12px 4px 12px",
               }}
             />
 
-            {cats.map(c => (
+            {cats.map((c) => (
               <button
                 key={c}
-                ref={el => { tabRefs.current[c] = el; }}
+                ref={(el) => {
+                  tabRefs.current[c] = el;
+                }}
                 onClick={() => {
                   setActive(c);
                   setIsExpanded(false);
@@ -625,7 +974,9 @@ function Menu() {
               className="btn-menu-expand group"
             >
               <span>{buttonText}</span>
-              <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : "animate-bounce"}`} />
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : "animate-bounce"}`}
+              />
             </button>
           </div>
         )}
@@ -635,11 +986,35 @@ function Menu() {
 }
 
 function Tag({ t }: { t: "spicy" | "veg" | "uj" | "nepszeru" | "18+" }) {
-  if (t === "spicy") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-destructive/15 text-destructive border border-destructive/30"><Flame className="h-3 w-3" /> Csípős</span>;
-  if (t === "veg") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-700 border border-emerald-500/20"><Leaf className="h-3 w-3" /> Vega</span>;
-  if (t === "nepszeru") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-sky-500/10 text-sky-700 border border-sky-500/20">Népszerű</span>;
-  if (t === "18+") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">18+</span>;
-  return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-accent/15 text-accent border border-accent/40">Új</span>;
+  if (t === "spicy")
+    return (
+      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-destructive/15 text-destructive border border-destructive/30">
+        <Flame className="h-3 w-3" /> Csípős
+      </span>
+    );
+  if (t === "veg")
+    return (
+      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">
+        <Leaf className="h-3 w-3" /> Vega
+      </span>
+    );
+  if (t === "nepszeru")
+    return (
+      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-sky-500/10 text-sky-700 border border-sky-500/20">
+        Népszerű
+      </span>
+    );
+  if (t === "18+")
+    return (
+      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/20">
+        18+
+      </span>
+    );
+  return (
+    <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest px-2 py-1 rounded-full bg-accent/15 text-accent border border-accent/40">
+      Új
+    </span>
+  );
 }
 
 function About() {
@@ -648,15 +1023,15 @@ function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
           {/* Restaurant interior image */}
-          <div 
+          <div
             className="lg:col-span-7 relative h-[280px] sm:h-[400px] lg:h-[600px] w-full overflow-hidden border border-primary/20 shadow-md group"
             style={{ borderRadius: "6px 24px 6px 24px" }}
           >
-            <img 
-              src={aboutInterior} 
-              alt="Ottoman's belső tér" 
-              className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              loading="lazy" 
+            <img
+              src={aboutInterior}
+              alt="Ottoman's belső tér"
+              className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 pointer-events-none" />
           </div>
@@ -664,14 +1039,17 @@ function About() {
           <div className="lg:col-span-5 lg:pl-6 self-center">
             <div className="text-accent text-[11px] tracking-[0.3em] uppercase mb-3">— Rólunk</div>
             <h2 className="font-display text-3xl sm:text-5xl uppercase leading-[1.15] mb-6">
-              Az utca <span className="text-gradient-ember italic font-serif">tüze.</span><br/>
-              A kézművesség <span className="italic font-serif text-primary">lelke.</span>
+              Az utca <span className="text-gradient-ember italic font-serif">tüze.</span>
+              <br />A kézművesség <span className="italic font-serif text-primary">lelke.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Az <strong className="text-foreground">Ottoman's</strong>-nál hisszük, hogy a street food nem gyors étel, hanem egy gyors, intenzív élmény. Csapatunk minden egyes tagja odáig van a török ízekért, és ezt az érzést szeretnénk minden vendégünknek átadni.
+              Az <strong className="text-foreground">Ottoman's</strong>-nál hisszük, hogy a street
+              food nem gyors étel, hanem egy gyors, intenzív élmény. Csapatunk minden egyes tagja
+              odáig van a török ízekért, és ezt az érzést szeretnénk minden vendégünknek átadni.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Naponta gyúrunk friss lavasht, magunk pácoljuk a húst, és kétszer sütjük a hasábot, mert Debrecen prémiumot érdemel.
+              Naponta gyúrunk friss lavasht, magunk pácoljuk a húst, és kétszer sütjük a hasábot,
+              mert Debrecen prémiumot érdemel.
             </p>
 
             {/* Stats Row moved from Hero */}
@@ -682,10 +1060,20 @@ function About() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border hover:border-accent text-sm transition-colors">
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border hover:border-accent text-sm transition-colors"
+              >
                 <Instagram className="h-4 w-4 text-accent" /> @ottomansdebrecen
               </a>
-              <a href={FACEBOOK} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border hover:border-accent text-sm transition-colors">
+              <a
+                href={FACEBOOK}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border hover:border-accent text-sm transition-colors"
+              >
                 <Facebook className="h-4 w-4 text-accent" /> Ottoman's Debrecen
               </a>
             </div>
@@ -706,13 +1094,23 @@ function Gallery() {
     { src: gallery4, span: "" },
   ];
   return (
-    <section id="gallery" className="relative py-20 sm:py-36 scroll-mt-20 sm:scroll-mt-28 hidden md:block">
+    <section
+      id="gallery"
+      className="relative py-20 sm:py-36 scroll-mt-20 sm:scroll-mt-28 hidden md:block"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-            <h2 className="font-display text-3xl sm:text-6xl uppercase leading-[1.15]">
-              A galéria<br/><span className="text-gradient-ember italic font-serif">— csak nézd.</span>
-            </h2>
-          <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-accent group">
+          <h2 className="font-display text-3xl sm:text-6xl uppercase leading-[1.15]">
+            A galéria
+            <br />
+            <span className="text-gradient-ember italic font-serif">— csak nézd.</span>
+          </h2>
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-accent group"
+          >
             <Instagram className="h-5 w-5" />
             <span className="font-display tracking-widest text-sm">Több az Instagramon</span>
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -720,16 +1118,27 @@ function Gallery() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[140px] sm:auto-rows-[220px] gap-3 sm:gap-4">
           {imgs.map((g, i) => (
-            <figure key={i} className={`relative overflow-hidden ring-1 ring-border group ${g.span}`} style={{ borderRadius: "6px 24px 6px 24px" }}>
+            <figure
+              key={i}
+              className={`relative overflow-hidden ring-1 ring-border group ${g.span}`}
+              style={{ borderRadius: "6px 24px 6px 24px" }}
+            >
               {g.src ? (
                 <>
-                  <img src={g.src} alt="Ottoman's" className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <img
+                    src={g.src}
+                    alt="Ottoman's"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
                 </>
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-50 border-2 border-dashed border-zinc-200/80 text-zinc-400 p-4">
                   <Camera className="h-5 w-5 mb-1.5 text-zinc-300" />
-                  <span className="text-[10px] uppercase tracking-widest font-semibold font-display">Hamarosan...</span>
+                  <span className="text-[10px] uppercase tracking-widest font-semibold font-display">
+                    Hamarosan...
+                  </span>
                 </div>
               )}
             </figure>
@@ -745,116 +1154,130 @@ const REVIEWS = [
     name: "Marci Hollár",
     text: "Debrecenen belül a legjobb döneres. Mindig friss jó minőségű húsok és zöldséges és kiváló adagok.\nNagyon kedves kiszolgálás.\nMindenkinek csak ajánlani tudom.",
     date: "4 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Kristóf Kalcsits",
     text: "Többször voltunk már.\nBőséges adagok, prémium alapanyagok, lenyűgöző, isteni finom ízek.\nA legjobb a városban, de valószínűleg még az országban is! Ilyet eddig csak külföldön ettünk.\nA személyzet nagyon szimpatikus és patika tisztaság van mindig.",
     date: "egy éve",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Balczó Róbert",
     text: "Hujujuj! Leírták már előttem: végre! Mert lehet jó egy görög gyors, egy körúti 6 dekás is sokszor megfelel, de a német/török dürüm, döner a legjobb. És Debrecen eddig ebben nem járt az élen, de most itt van Ottoman. Semmi extra, bejössz, kikéred, bejön. Bármikor. Jók a fűszerek, határozott ízvilág, nem kell tüzet lélegezni még akkor sem ha csípős, a fries közepe olvad, a külseje roppan. A srácok jó fejek, tiszta és rendezett! Jó, hogy jöttetek!",
     date: "egy éve",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Barbara Mitro",
     text: "Nagyon finom ételeket készítenek itt, mind a zöldségek, mind a húsok mindig frissek. Ajánlom!",
     date: "3 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "misu1644",
     text: "Nekem ez újnak számít amit ők nyújtanak és eléggé finom! Kedvenc gyorséttermi ételem a gyros és ez megfelel az összes elvárásomnak. Egyedül az étterem nagyságával van gond, amiatt csak 4 csillagot tudok adni de egyébként ezt leszámítva 5.\nElvitelre is rendeltem már, úgy 5/5 csillag.",
     date: "8 hónapja",
-    stars: 4
+    stars: 4,
   },
   {
     name: "Gábor Zsolnai",
     text: "Szuper minden finom volt végre van egy hely ahol gondoltak a kicsi gyerekre aki nem eszi még meg a dönert és van náluk gyerek menü ezért gratulálok nekik",
     date: "5 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Emese Hegyközi",
     text: "Kedves Ottoman,\nKöszönjük a finom és különleges ételeket!🤩\n☝🏻Az biztos, hogy ilyen nincs még egy Debrecenben🌯 🍟",
     date: "egy éve",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Tibor Alt",
     text: "Ez egy jó hely, a dönerük jó és az asztalokat folyamatosan takarítják. Talán a fokhagymás öntet ami a pita alján összegyűlt egy kicsit tömény volt, de ezzel együtt is jó volt.",
     date: "3 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Lövész Péter",
     text: "Nagyon finom, nekem sok volt. Én még extra szószt is kértem, annyira finom volt 😊 A kiszolgálók is nagyon kedvesek, megérdemlik az 5-öst",
     date: "7 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "dav",
     text: "Kedves és gyors kiszolgálás még zárás előtt is, egészen jó árban finom étel.",
     date: "4 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "László Kaszás",
     text: "Elégedett voltam az Döner boxxal, a marhahús megfelelő ízű volt, a csirkeset legközelebb kóstolom meg.\nA curry wurstot kíváncsian várom.",
     date: "egy éve",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Attila Nagy",
     text: "Ritkán eszünk egy utazásunk során kétszer ugyan azon a helyen. Ide viszont visszatértünk mert nagyon jót ettünk az első alkalommal és másodszorra is.\nKöszönjük!",
     date: "9 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Attila Tanka",
     text: "Nagyon finom volt az étel és jó volt a kiszolgálás😊 😊 A szósz választék BRUTÁLIS🤩 🤩 🤪",
     date: "egy éve",
-    stars: 5
+    stars: 5,
   },
   {
     name: "Nagy Kata",
     text: "Nagyon jó volt az étel és a hely hangulata szép nagy adag van én csak ajánlani tudom!",
     date: "4 hónapja",
-    stars: 5
+    stars: 5,
   },
   {
     name: "József Gyuricza",
     text: "Gyors, finom, jó nagy adag, nem bírtam megenni.",
     date: "egy hónapja",
-    stars: 5
-  }
+    stars: 5,
+  },
 ];
 
-function ReviewCard({ rev, index, compact }: { rev: typeof REVIEWS[0]; index: number; compact?: boolean }) {
-  const initials = rev.name.split(" ").map(n => n[0]).join("").toUpperCase();
+function ReviewCard({
+  rev,
+  index,
+  compact,
+}: {
+  rev: (typeof REVIEWS)[0];
+  index: number;
+  compact?: boolean;
+}) {
+  const initials = rev.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
   const isEven = index % 2 === 0;
   const avatarBg = isEven ? "bg-orange-50 text-primary" : "bg-zinc-100 text-zinc-700";
 
   return (
-    <div className={`bg-white border border-border/80 shadow-sm rounded-xl p-4 flex flex-col gap-2.5 ${compact ? "mx-1" : "mx-4"} hover:shadow-md transition-shadow duration-300`}>
+    <div
+      className={`bg-white border border-border/80 shadow-sm rounded-xl p-4 flex flex-col gap-2.5 ${compact ? "mx-1" : "mx-4"} hover:shadow-md transition-shadow duration-300`}
+    >
       <div className="flex items-center gap-3">
-        <div className={`h-8 w-8 rounded-full ${avatarBg} flex items-center justify-center text-xs font-bold shrink-0`}>
+        <div
+          className={`h-8 w-8 rounded-full ${avatarBg} flex items-center justify-center text-xs font-bold shrink-0`}
+        >
           {initials}
         </div>
         <div className="min-w-0 flex-1">
           <div className="text-xs font-semibold text-zinc-800 truncate">{rev.name}</div>
           <div className="flex items-center gap-1 mt-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star 
-                key={i} 
+              <Star
+                key={i}
                 className={`h-3 w-3 ${
-                  i < rev.stars 
-                    ? "fill-amber-400 text-amber-400" 
-                    : "text-zinc-200 fill-zinc-100"
-                }`} 
+                  i < rev.stars ? "fill-amber-400 text-amber-400" : "text-zinc-200 fill-zinc-100"
+                }`}
               />
             ))}
             <span className="text-[10px] text-zinc-400 ml-1.5">{rev.date}</span>
@@ -862,10 +1285,22 @@ function ReviewCard({ rev, index, compact }: { rev: typeof REVIEWS[0]; index: nu
         </div>
         <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 font-semibold shrink-0">
           <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4"
+            />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853"
+            />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+              fill="#FBBC05"
+            />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+              fill="#EA4335"
+            />
           </svg>
           <span>Google</span>
         </div>
@@ -883,9 +1318,13 @@ function Contact() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           <div className="min-w-0 w-full">
-            <div className="text-accent text-[11px] tracking-[0.3em] uppercase mb-3">— Kapcsolat</div>
+            <div className="text-accent text-[11px] tracking-[0.3em] uppercase mb-3">
+              — Kapcsolat
+            </div>
             <h2 className="font-display text-3xl sm:text-6xl uppercase leading-[1.15] mb-6">
-              Találkozzunk<br/><span className="text-gradient-ember italic font-serif">Debrecenben.</span>
+              Találkozzunk
+              <br />
+              <span className="text-gradient-ember italic font-serif">Debrecenben.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md">
               Ülj be hozzánk egy friss dürümre, vagy rendelj online — bármerre is jársz a városban.
@@ -893,39 +1332,45 @@ function Contact() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <InfoCard
-                icon={<Clock className="h-5 w-5"/>}
+                icon={<Clock className="h-5 w-5" />}
                 title="Nyitvatartás"
                 lines={["Vas–Csüt: 11:00 – 24:00", "Pén–Szom: 11:00 – 24:00"]}
               />
               <InfoCard
-                icon={<MapPin className="h-5 w-5"/>}
+                icon={<MapPin className="h-5 w-5" />}
                 title="Cím"
                 lines={["Debrecen, Magyarország", "Részletek a térképen"]}
                 link={MAPS}
                 linkLabel="Útvonal →"
               />
               <InfoCard
-                icon={<Phone className="h-5 w-5"/>}
+                icon={<Phone className="h-5 w-5" />}
                 title="Telefon"
                 lines={["+36 30 642 0420"]}
                 link={`tel:${PHONE}`}
                 linkLabel="Hívás most →"
               />
               <InfoCard
-                icon={<UtensilsCrossed className="h-5 w-5"/>}
+                icon={<UtensilsCrossed className="h-5 w-5" />}
                 title="Rendelés"
                 lines={["Foodora · Wolt"]}
                 links={[
-                  { href: "https://www.foodora.hu/restaurant/nsae/ottomans-doner-fries-and-wurst", label: "Foodora" },
-                  { href: "https://wolt.com/hu/hun/debrecen/restaurant/ottomans-doner-fries-curry-wurst?srsltid=AfmBOoosxBtXw-WjHW4-iztS-W-wYR8NR1_BalCft-E0orCwNqLiUbnr", label: "Wolt" }
+                  {
+                    href: "https://www.foodora.hu/restaurant/nsae/ottomans-doner-fries-and-wurst",
+                    label: "Foodora",
+                  },
+                  {
+                    href: "https://wolt.com/hu/hun/debrecen/restaurant/ottomans-doner-fries-curry-wurst?srsltid=AfmBOoosxBtXw-WjHW4-iztS-W-wYR8NR1_BalCft-E0orCwNqLiUbnr",
+                    label: "Wolt",
+                  },
                 ]}
               />
             </div>
           </div>
 
           <div className="relative w-full h-[180px] sm:h-[200px] lg:h-auto mt-6 lg:mt-0 min-w-0 overflow-hidden">
-            <div 
-              className="lg:absolute lg:inset-0 w-full h-full relative overflow-hidden border border-primary/30 bg-zinc-50 flex items-center lg:block" 
+            <div
+              className="lg:absolute lg:inset-0 w-full h-full relative overflow-hidden border border-primary/30 bg-zinc-50 flex items-center lg:block"
               style={{ borderRadius: "6px 24px 6px 24px" }}
             >
               {/* Desktop vertical overlays */}
@@ -937,24 +1382,30 @@ function Contact() {
               <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 z-10 bg-gradient-to-l from-zinc-50 to-transparent lg:hidden" />
 
               {/* Horizontal scrolling marquee for Mobile */}
-              <div 
+              <div
                 className="flex flex-row w-max animate-marquee-slow items-center gap-3 py-4 lg:hidden"
                 style={{ willChange: "transform" }}
               >
                 {REVIEWS.map((rev, idx) => (
-                  <div key={`rm1-${idx}`} className="shrink-0 w-[270px] sm:w-[310px] whitespace-normal">
+                  <div
+                    key={`rm1-${idx}`}
+                    className="shrink-0 w-[270px] sm:w-[310px] whitespace-normal"
+                  >
                     <ReviewCard rev={rev} index={idx} compact={true} />
                   </div>
                 ))}
                 {REVIEWS.map((rev, idx) => (
-                  <div key={`rm2-${idx}`} className="shrink-0 w-[270px] sm:w-[310px] whitespace-normal">
+                  <div
+                    key={`rm2-${idx}`}
+                    className="shrink-0 w-[270px] sm:w-[310px] whitespace-normal"
+                  >
                     <ReviewCard rev={rev} index={idx} compact={true} />
                   </div>
                 ))}
               </div>
 
               {/* Vertical scrolling marquee for Desktop */}
-              <div 
+              <div
                 className="hidden lg:flex flex-col animate-marquee-vertical"
                 style={{ willChange: "transform" }}
               >
@@ -981,7 +1432,7 @@ function Contact() {
             rel="noreferrer"
             className="h-14 w-14 inline-flex items-center justify-center rounded-full border border-border bg-white text-foreground hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-1 transform transition-all duration-300 shadow-sm"
           >
-            <Facebook className="h-6 w-6"/>
+            <Facebook className="h-6 w-6" />
           </a>
           <a
             href={INSTAGRAM}
@@ -989,7 +1440,7 @@ function Contact() {
             rel="noreferrer"
             className="h-14 w-14 inline-flex items-center justify-center rounded-full border border-border bg-white text-foreground hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-1 transform transition-all duration-300 shadow-sm"
           >
-            <Instagram className="h-6 w-6"/>
+            <Instagram className="h-6 w-6" />
           </a>
           <a
             href={MAPS}
@@ -997,7 +1448,7 @@ function Contact() {
             rel="noreferrer"
             className="h-14 w-14 inline-flex items-center justify-center rounded-full border border-border bg-white text-foreground hover:bg-primary hover:text-white hover:border-primary hover:-translate-y-1 transform transition-all duration-300 shadow-sm"
           >
-            <Star className="h-6 w-6"/>
+            <Star className="h-6 w-6" />
           </a>
         </div>
       </div>
@@ -1005,7 +1456,15 @@ function Contact() {
   );
 }
 
-function InfoCard({ icon, title, lines, accent, link, linkLabel, links }: {
+function InfoCard({
+  icon,
+  title,
+  lines,
+  accent,
+  link,
+  linkLabel,
+  links,
+}: {
   icon: React.ReactNode;
   title: string;
   lines: string[];
@@ -1015,15 +1474,27 @@ function InfoCard({ icon, title, lines, accent, link, linkLabel, links }: {
   links?: { href: string; label: string }[];
 }) {
   return (
-    <div className="relative p-3 sm:p-5 bg-primary text-white border border-primary/20 hover:shadow-lg transition-all group"
-         style={{ borderRadius: "6px 24px 6px 24px" }}>
+    <div
+      className="relative p-3 sm:p-5 bg-primary text-white border border-primary/20 hover:shadow-lg transition-all group"
+      style={{ borderRadius: "6px 24px 6px 24px" }}
+    >
       <div className="flex items-center gap-2 sm:gap-3 mb-2.5 sm:mb-3">
-        <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg bg-white/20 text-white inline-flex items-center justify-center shrink-0">{icon}</span>
-        <h3 className="font-display tracking-widest uppercase text-xs sm:text-sm text-white truncate">{title}</h3>
-        {accent && <span className="ml-auto text-[9px] sm:text-[10px] uppercase tracking-widest text-emerald-100 bg-emerald-500/30 px-1.5 sm:px-2 py-0.5 rounded-full">{accent}</span>}
+        <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-lg bg-white/20 text-white inline-flex items-center justify-center shrink-0">
+          {icon}
+        </span>
+        <h3 className="font-display tracking-widest uppercase text-xs sm:text-sm text-white truncate">
+          {title}
+        </h3>
+        {accent && (
+          <span className="ml-auto text-[9px] sm:text-[10px] uppercase tracking-widest text-emerald-100 bg-emerald-500/30 px-1.5 sm:px-2 py-0.5 rounded-full">
+            {accent}
+          </span>
+        )}
       </div>
       <div className="text-xs sm:text-sm text-white/95 space-y-0.5 font-medium leading-snug">
-        {lines.map(l => <div key={l}>{l}</div>)}
+        {lines.map((l) => (
+          <div key={l}>{l}</div>
+        ))}
       </div>
       {links ? (
         <div className="mt-2.5 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2">
@@ -1040,10 +1511,17 @@ function InfoCard({ icon, title, lines, accent, link, linkLabel, links }: {
             </a>
           ))}
         </div>
-      ) : link && (
-        <a href={link} target="_blank" rel="noreferrer" className="mt-2.5 sm:mt-3 inline-flex items-center text-white hover:text-white/80 font-semibold text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest group-hover:translate-x-0.5 transition-transform">
-          {linkLabel}
-        </a>
+      ) : (
+        link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2.5 sm:mt-3 inline-flex items-center text-white hover:text-white/80 font-semibold text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest group-hover:translate-x-0.5 transition-transform"
+          >
+            {linkLabel}
+          </a>
+        )
       )}
     </div>
   );
@@ -1055,11 +1533,17 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-4 text-center sm:text-left">
         <div className="flex flex-col sm:flex-row items-center gap-3">
           <div className="h-10 w-10 shrink-0 rounded-lg overflow-hidden ring-1 ring-accent/40 bg-white">
-            <img src={headerLogo} alt="Ottoman's" className="h-full w-full object-contain mix-blend-multiply p-0.5" />
+            <img
+              src={headerLogo}
+              alt="Ottoman's"
+              className="h-full w-full object-contain mix-blend-multiply p-0.5"
+            />
           </div>
           <div className="flex flex-col items-center sm:items-start">
             <div className="font-display tracking-wider text-foreground">OTTOMAN'S</div>
-            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Döner · Fries · Wurst · Debrecen</div>
+            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              Döner · Fries · Wurst · Debrecen
+            </div>
           </div>
         </div>
         <div className="text-xs text-muted-foreground">
@@ -1076,21 +1560,21 @@ function OrderModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
         onClick={onClose}
       />
-      
+
       {/* Modal Card */}
-      <div 
+      <div
         className="relative w-full max-w-xs sm:max-w-sm bg-white border border-primary/20 shadow-2xl p-6 overflow-hidden z-10 flex flex-col items-center text-center animate-reveal"
         style={{ borderRadius: "6px 24px 6px 24px" }}
       >
         {/* Slanted checkerboard strip at the top */}
         <div className="absolute top-0 inset-x-0 h-2 bg-slanted-checkerboard" />
-        
+
         {/* Close Button */}
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
           aria-label="Bezárás"
@@ -1102,8 +1586,10 @@ function OrderModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-4 shrink-0 animate-bounce">
           <ShoppingBag className="h-6 w-6" />
         </div>
-        
-        <h3 className="font-syne text-xl sm:text-2xl font-extrabold uppercase tracking-wide text-foreground mb-1.5">Rendeld meg a kedvenceid</h3>
+
+        <h3 className="font-syne text-xl sm:text-2xl font-extrabold uppercase tracking-wide text-foreground mb-1.5">
+          Rendeld meg a kedvenceid
+        </h3>
         <p className="text-xs text-muted-foreground mb-6 max-w-[240px]">
           Válassz az alábbi házhozszállítási partnereink közül a rendelés leadásához:
         </p>
@@ -1116,9 +1602,9 @@ function OrderModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-2 py-3 px-5 text-white font-bold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-lg active:scale-95 shadow-sm"
-            style={{ 
-              backgroundColor: "#D70F64", 
-              borderRadius: "6px 24px 6px 24px" 
+            style={{
+              backgroundColor: "#D70F64",
+              borderRadius: "6px 24px 6px 24px",
             }}
           >
             <span>Foodora</span>
@@ -1131,9 +1617,9 @@ function OrderModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-2 py-3 px-5 text-white font-bold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-lg active:scale-95 shadow-sm"
-            style={{ 
-              backgroundColor: "#00C2E8", 
-              borderRadius: "6px 24px 6px 24px" 
+            style={{
+              backgroundColor: "#00C2E8",
+              borderRadius: "6px 24px 6px 24px",
             }}
           >
             <span>Wolt</span>
@@ -1141,7 +1627,7 @@ function OrderModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           </a>
         </div>
 
-        <button 
+        <button
           onClick={onClose}
           className="mt-5 text-[11px] uppercase tracking-widest text-zinc-600 hover:text-zinc-900 font-bold transition-colors"
         >

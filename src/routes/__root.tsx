@@ -79,7 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Ottoman's Döner, Fries & Wurst — Debrecen" },
-      { name: "description", content: "Prémium török street food Debrecen szívében. Döner, dürüm, box, curry wurst és ropogós hasáb." },
+      {
+        name: "description",
+        content:
+          "Prémium török street food Debrecen szívében. Döner, dürüm, box, curry wurst és ropogós hasáb.",
+      },
       { property: "og:title", content: "Ottoman's Döner, Fries & Wurst — Debrecen" },
       { property: "og:description", content: "Prémium török street food Debrecen szívében." },
       { property: "og:type", content: "website" },
