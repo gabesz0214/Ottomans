@@ -512,9 +512,9 @@ function Hero() {
       <div className="absolute top-0 left-0 right-0 h-12 bg-slanted-checkerboard border-b border-primary/10 shadow-sm z-30" />
 
       {/* Mesh Gradient Blobs */}
-      <div className="hidden md:block absolute top-[10%] left-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out transform-gpu will-change-transform" />
+      <div className="hidden md:block absolute top-[10%] left-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-orange-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out" />
       <div
-        className="hidden md:block absolute bottom-[10%] right-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-amber-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out transform-gpu will-change-transform"
+        className="hidden md:block absolute bottom-[10%] right-[-10%] w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-amber-500/5 blur-[120px] sm:blur-[160px] pointer-events-none -z-10 animate-[pulse_8s_infinite] ease-in-out"
         style={{ animationDelay: "4s" }}
       />
 
@@ -723,16 +723,17 @@ function MenuItemCard({ item, index, active }: { item: MenuItem; index: number; 
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    console.log("Render loop check: MenuItemCard effect ran for", item.name);
     const img = imgRef.current;
     if (!item.img) {
-      setImgLoaded(false);
+      setImgLoaded((prev) => (prev ? false : prev));
       return;
     }
 
     if (img && img.complete) {
-      setImgLoaded(true);
+      setImgLoaded((prev) => (prev ? prev : true));
     } else {
-      setImgLoaded(false);
+      setImgLoaded((prev) => (!prev ? prev : false));
     }
   }, [item.img]);
 
@@ -805,7 +806,7 @@ function MenuItemCard({ item, index, active }: { item: MenuItem; index: number; 
             ref={imgRef}
             src={item.img}
             alt={item.name}
-            onLoad={() => setImgLoaded(true)}
+            onLoad={() => setImgLoaded((prev) => (prev ? prev : true))}
             className={`absolute inset-0 h-full w-full group-hover:scale-105 transition-transform duration-500 ease-out ${
               active === "Italok" ? "object-contain p-2" : "object-cover"
             }`}
