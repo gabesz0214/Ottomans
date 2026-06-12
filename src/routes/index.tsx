@@ -505,7 +505,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative w-full min-h-screen pt-32 pb-24 flex items-center noise overflow-hidden"
+      className="relative w-full min-h-screen pt-32 pb-16 flex flex-col justify-between noise overflow-hidden"
       style={{ backgroundImage: "radial-gradient(circle at center, #ffffff 40%, #f4f4f5 120%)" }}
     >
       {/* Top Slanted Checkerboard Banner */}
@@ -625,53 +625,60 @@ function Hero() {
         })}
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-12 gap-10 items-center w-full relative">
-        {/* Centered Content */}
-        <div className="lg:col-span-12 relative flex flex-col items-center w-full z-10 min-w-0">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[11px] tracking-[0.25em] uppercase mb-6 animate-reveal">
-            <Flame className="h-3.5 w-3.5" /> Debrecen · Est. 2024
-          </div>
+      {/* Main Content Area (centered vertically) */}
+      <div className="flex-1 flex items-center justify-center w-full">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 w-full relative">
+          {/* Centered Content */}
+          <div className="relative flex flex-col items-center w-full z-10 min-w-0">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-[11px] tracking-[0.25em] uppercase mb-6 animate-reveal">
+              <Flame className="h-3.5 w-3.5" /> Debrecen · Est. 2024
+            </div>
 
-          {/* Centered Brand Logo */}
-          <div className="max-w-[320px] sm:max-w-[580px] md:max-w-3xl w-full mb-6 animate-reveal">
-            <img
-              src={logo}
-              alt="Ottoman's Logo"
-              className="w-full h-auto object-contain mix-blend-multiply"
-            />
-          </div>
+            {/* Centered Brand Logo */}
+            <div className="max-w-[320px] sm:max-w-[580px] md:max-w-3xl w-full mb-6 animate-reveal">
+              <img
+                src={logo}
+                alt="Ottoman's Logo"
+                className="w-full h-auto object-contain mix-blend-multiply"
+              />
+            </div>
 
-          <p className="mt-8 max-w-2xl text-base sm:text-lg text-zinc-800 leading-relaxed text-center animate-reveal">
-            Lassan sült döner, ropogós belga hasáb és berlini curry wurst — Isztambul utcáinak tüze
-            és Európa street-food kultúrája egyetlen falatban.
-          </p>
+            <p className="mt-8 max-w-2xl text-base sm:text-lg text-zinc-800 leading-relaxed text-center animate-reveal">
+              Lassan sült döner, ropogós belga hasáb és berlini curry wurst — Isztambul utcáinak
+              tüze és Európa street-food kultúrája egyetlen falatban.
+            </p>
 
-          {/* Static Badges */}
-          <div className="mt-6 flex flex-wrap justify-center gap-3 animate-reveal">
-            {["Eredeti török ízek", "Friss lavash naponta", "Ropogós belga hasáb"].map((badge) => (
-              <span
-                key={badge}
-                className="px-3 py-1.5 sm:px-6 sm:py-2.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider bg-white border-2 border-primary text-primary shadow-sm"
-                style={{ borderRadius: "4px 12px 4px 12px" }}
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
+            {/* Static Badges */}
+            <div className="mt-6 flex flex-wrap justify-center gap-3 animate-reveal">
+              {["Eredeti török ízek", "Friss lavash naponta", "Ropogós belga hasáb"].map(
+                (badge) => (
+                  <span
+                    key={badge}
+                    className="px-3 py-1.5 sm:px-6 sm:py-2.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider bg-white border-2 border-primary text-primary shadow-sm"
+                    style={{ borderRadius: "4px 12px 4px 12px" }}
+                  >
+                    {badge}
+                  </span>
+                ),
+              )}
+            </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4 animate-reveal">
-            <a href="#menu" className="btn-ember">
-              Nézd meg a menüt <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-            </a>
-            <a href={MAPS} target="_blank" rel="noreferrer" className="btn-ghost-gold">
-              <Navigation className="h-4 w-4 sm:h-5 sm:w-5" /> Hogyan találsz ide?
-            </a>
+            <div className="mt-10 flex flex-wrap justify-center gap-4 animate-reveal">
+              <a href="#menu" className="btn-ember">
+                Nézd meg a menüt <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              </a>
+              <a href={MAPS} target="_blank" rel="noreferrer" className="btn-ghost-gold">
+                <Navigation className="h-4 w-4 sm:h-5 sm:w-5" /> Hogyan találsz ide?
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 text-muted-foreground text-xs tracking-[0.3em] uppercase flex flex-col items-center gap-2 animate-flicker z-30">
-        görgess <ChevronDown className="h-4 w-4 animate-bounce" />
+      {/* Scroll Down Indicator - pushed to the bottom by flex-col */}
+      <div className="w-full flex flex-col items-center gap-2 text-muted-foreground text-xs tracking-[0.3em] uppercase animate-flicker z-30 mt-8 mb-4">
+        <span>görgess</span>
+        <ChevronDown className="h-4 w-4 animate-bounce" />
       </div>
 
       {/* Bottom Slanted Checkerboard Banner */}
