@@ -906,7 +906,7 @@ function Menu() {
               — Az étlap
             </div>
             <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.15] uppercase">
-              Tüz, hús,
+              Tűz, hús,
               <br />
               <span className="text-gradient-ember italic font-serif font-black tracking-wide">
                 ízek.
